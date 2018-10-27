@@ -12,16 +12,16 @@ def scrape():
 
     # Retrieve the parent divs for all articles
     results = mars_news_soup.find('div', class_='slide')
+    print(results)
 
     # Loop through results to retrieve article title, header, and timestamp of article
-    for result in results:
-        mars_news_title = result.find('div', class_='content_title').text
-        mars_news_p = result.find('div', class_='rollover_description_inner').text
+    mars_news_title = results.find('div', class_='content_title').text
+    mars_news_p = results.find('div', class_='rollover_description_inner').text
     
     # ### JPL Mars Images
     from splinter import Browser
     # https://splinter.readthedocs.io/en/latest/drivers/chrome.html
-    get_ipython().system('which chromedriver')
+    #get_ipython().system('which chromedriver')
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
 
@@ -70,7 +70,7 @@ def scrape():
         row_list.append(row)
 
     fact_df = pd.DataFrame(row_list, columns=["Type", "Stat"])
-    fact_html = fact_df.to_html
+    fact_html = fact_df.to_html()
 
 
     # ### Mars Hemisphere
@@ -103,7 +103,7 @@ def scrape():
 
     title_2= pic_2_soup.find('h2', class_="title").text
 
-    hemisphere_image_urls.append([{"title":title_2, "img_url":img2_url}])
+    hemisphere_image_urls.append({"title":title_2, "img_url":img2_url})
 
     pic_3_url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced'
     browser.visit(pic_3_url)
@@ -118,7 +118,7 @@ def scrape():
 
     title_3= pic_3_soup.find('h2', class_="title").text
 
-    hemisphere_image_urls.append([{"title":title_3, "img_url":img3_url}])
+    hemisphere_image_urls.append({"title":title_3, "img_url":img3_url})
 
     pic_4_url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'
     browser.visit(pic_4_url)
@@ -133,13 +133,13 @@ def scrape():
 
     title_4= pic_4_soup.find('h2', class_="title").text
 
-    hemisphere_image_urls.append([{"title":title_4, "img_url":img4_url}])
+    hemisphere_image_urls.append({"title":title_4, "img_url":img4_url})
 
-    scrape_dict = {"Mars News Title": mars_news_title,
-                    "Mars News Short Desc" : mars_news_p,
-                    "Featured Image" : feature_url,
-                    "Mars Weather" : mars_weather,
-                    "Fact Table" : fact_html,
-                    "Hemisphere pictures" : hemisphere_image_urls}
+    scrape_dict = {"mars_news_title": mars_news_title,
+                    "mars_news_p" : mars_news_p,
+                    "feature_url" : feature_url,
+                    "mars_weather" : mars_weather,
+                    "fact_html" : fact_html,
+                    "hemisphere_image_urls" : hemisphere_image_urls}
 
     return scrape_dict

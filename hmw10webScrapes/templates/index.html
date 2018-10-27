@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mars Information</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <div class="col-lg-8">
                 <div class="card-body">
                     <h4 class="card-title">Featured View of Mars</h4>
-                    <img class="feat-pic">{{ mars_data.feature_url }}
+                    <img class="feat-pic" src= {{ mars_data.feature_url }}>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-body">
                         <h4 class="card-title">Mars Facts</h4>
-                        <p class="card-text">{{ mars_data.fact_html }}</p>
+                        {{ mars_data.fact_html | safe}}
                     </div>
             </div>
         </div>
@@ -52,13 +52,13 @@
                 <div class="col-lg-6">
                     <div class="card-body">
                         <h4 class="card-title">Cereberus Hemisphere</h4>
-                        <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                        <img class="hemi-pic" src= {{ mars_data.hemisphere_image_urls[0].img_url }}>
                     </div>
                 </div>
                 <div class="col-lg-6">
                         <div class="card-body">
                             <h4 class="card-title">Schiaparelli Hemisphere</h4>
-                            <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                            <img class="hemi-pic" src= {{ mars_data.hemisphere_image_urls[1].img_url }}>
                         </div>
                     </div>
         </div>
@@ -66,13 +66,13 @@
                 <div class="col-lg-6">
                     <div class="card-body">
                         <h4 class="card-title">Syrtis Major Hemisphere</h4>
-                        <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                        <img class="hemi-pic" src = {{ mars_data.hemisphere_image_urls[2].img_url }}>
                     </div>
                 </div>
                 <div class="col-lg-6">
                         <div class="card-body">
                             <h4 class="card-title">Valles Marineris Hemisphere</h4>
-                            <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                            <img class="hemi-pic" src={{ mars_data.hemisphere_image_urls[3].img_url }}>
                         </div>
                     </div>
         </div>
