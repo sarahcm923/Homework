@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>* Fun Mars Data *</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Refresh for new info!</a></p>
+
+        </div>
+
+        <div class="row" id="mars-news">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Hottest Mars News in the Solar System</h4>
+                      <h5 class="card-subtitle">{{ mars_data.mars_news_title }}</h5>
+                      <p class="card-text">{{ mars_data.mars_news_p }}</p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card-body">
+                    <h4 class="card-title">Featured View of Mars</h4>
+                    <img class="feat-pic">{{ mars_data.feature_url }}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-body">
+                    <h4 class="card-title">Current Weather</h4>
+                    <p class="card-text">{{ mars_data.mars_weather }}</p>
+                </div>
+                <div class="card-body">
+                        <h4 class="card-title">Mars Facts</h4>
+                        <p class="card-text">{{ mars_data.fact_html }}</p>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-body">
+                        <h4 class="card-title">Cereberus Hemisphere</h4>
+                        <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                        <div class="card-body">
+                            <h4 class="card-title">Schiaparelli Hemisphere</h4>
+                            <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                        </div>
+                    </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-body">
+                        <h4 class="card-title">Syrtis Major Hemisphere</h4>
+                        <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                        <div class="card-body">
+                            <h4 class="card-title">Valles Marineris Hemisphere</h4>
+                            <img class="feat-pic">{{ mars_data.hemispheres_image_urls }}
+                        </div>
+                    </div>
+        </div>
+
+    </div>
+
+
+</body>
